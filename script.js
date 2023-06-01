@@ -10,9 +10,15 @@ const bodyEl = document.querySelector("body")
 // Set the canvas dimensions
 canvas.width = containerWidth;
 canvas.height = containerHeight;
-
+let play = false
 addEventListener("click", () => {
-
+    if (!play) {
+        play = true;
+        console.log("it's alive");
+    } else {
+        play = false
+        console.log("it's died");
+    }
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     fetch('musicExample.mp3')
         .then(response => response.arrayBuffer())
@@ -21,6 +27,11 @@ addEventListener("click", () => {
             // Create an audio source from the decoded audio buffer
             const source = audioContext.createBufferSource();
             source.buffer = audioBuffer;
+
+            if (!play && audioContext.state === "running") {
+                audioContext.suspend()
+                source.stop()
+            }
 
             // Create an analyser node to analyze the audio data
             const analyser = audioContext.createAnalyser();
