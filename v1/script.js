@@ -20,7 +20,7 @@ addEventListener("click", () => {
         console.log("it's died");
     }
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    fetch('musicExample.mp3')
+    fetch('../MUSIC/musicExample9.mp3')
         .then(response => response.arrayBuffer())
         .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
         .then(audioBuffer => {
