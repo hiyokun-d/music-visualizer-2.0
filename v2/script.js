@@ -25,7 +25,7 @@ function setCanvasSize() {
 const { containerWidth, containerHeight } = setCanvasSize();
 
 // Load and play audio
-fetch('../MUSIC/musicExample10.mp3')
+fetch('../MUSIC/musicExample9.mp3')
     .then((response) => response.arrayBuffer())
     .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
     .then((audioBuffer) => {
@@ -75,7 +75,7 @@ fetch('../MUSIC/musicExample10.mp3')
 
         // Call the detectBeat function to start beat detection
         detectBeat();
-        
+
         // Start playing the audio
         Array.from(pausePlay).forEach((element) => {
             element.addEventListener("click", () => {
@@ -93,6 +93,7 @@ fetch('../MUSIC/musicExample10.mp3')
                     element.classList.add("play");
                     element.textContent = "▸";
                     audioContext.suspend().then(() => source.stop()); // Suspend and stop the audio
+                    visualizerMenu.style.animation = ""
                 }
             });
         });
@@ -111,13 +112,13 @@ fetch('../MUSIC/musicExample10.mp3')
             // Set visualizer style properties
             ctx.strokeStyle = 'rgb(187, 225, 250)'; // Set the stroke color
             ctx.lineWidth = 2; // Set the line width
-            
+
             // Calculate the width of each line segment
             const segmentWidth = containerWidth / dataArray.length + 3;
-            
+
             // Calculate the vertical center
             const centerY = containerHeight / 2;
-            
+
             // Draw the centered line-based visualizer
             ctx.beginPath();
             for (let i = 0; i < dataArray.length; i++) {
@@ -137,7 +138,10 @@ fetch('../MUSIC/musicExample10.mp3')
                 visualizer.style.animation = "beat 0.5s ease infinite"
                 bodyEl.style.animation = "backgroundAnimation 1s ease infinite"
             } else {
-                visualizerMenu.style.animation = "rotate3D 1.5s ease infinite"
+                if (play) {
+                    visualizerMenu.style.animation = "rotate3D 1.5s ease infinite"
+                }
+
                 visualizer.style.animation = ""
                 bodyEl.style.animation = ""
                 bodyEl.style.backgroundColor = "black"
