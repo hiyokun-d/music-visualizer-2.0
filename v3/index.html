@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Music Analyzer v3</title>
-		<link rel="stylesheet" href="style.css" />
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-			integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-		></script>
-	</head>
 
-	<body>
-		<div class="video-player">
-			<video muted id="background-video">
-				<source
-					src="video/Gravity Falls - Epic Orchestral Cover.mp4"
-					type="video/mp4"
-				/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Analyzer v3</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+    integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
 
-				to be honest your browser is not support video tag, maybe you can just upgrade your browser into the latest version. or you can just throw your computer out of the window
-			</video>
-		</div>
+<body>
+  <div class="video-player">
+    <video muted id="background-video">
+      <source src="video/DUKA - last chilid (lirik).mp4" type="video/mp4" />
 
-		<div class="visualizer-container">
-			<canvas class="left visualizer"
-				>Your Browser need to update to the latest update</canvas
-			>
-			<canvas class="right visualizer"
-				>Your Browser need to update to the latest update</canvas
-			>
-		</div>
+      to be honest your browser is not support video tag, maybe you can just upgrade your browser into the latest
+      version. or you can just throw your computer out of the window
+    </video>
+  </div>
 
-		<script src="script.js"></script>
-		<script src="beat.js"></script>
-	</body>
+  <div class="visualizer-container">
+    <canvas class="left visualizer">Your Browser need to update to the latest update</canvas>
+    <canvas class="right visualizer">Your Browser need to update to the latest update</canvas>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="beat.js"></script>
+</body>
+
 </html>

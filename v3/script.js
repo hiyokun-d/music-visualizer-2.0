@@ -41,8 +41,8 @@ for (const element of canvases) {
 
   canvas.width = innerHeight;
   canvas.height = innerHeight;
-
-  fetch("music/gravity falls.mp3")
+ 
+  fetch("music/DUKA - last chilid (lirik).mp3")
     .then((response) => response.arrayBuffer())
     .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
     .then((AudioBuffer) => {
@@ -51,7 +51,7 @@ for (const element of canvases) {
       source.buffer = AudioBuffer;
 
       analyser = audioContext.createAnalyser();
-      analyser.fftSize = 1024; // Adjust this for the smoother visualization
+      analyser.fftSize = 4096; // Adjust this for the smoother visualization
       const bufferLength = analyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       analyser.getByteTimeDomainData(dataArray);
@@ -88,7 +88,7 @@ for (const element of canvases) {
         if (audioContext.state === 'suspended') {
           audioContext.resume().then(() => {
             console.log('Audio context resumed successfully');
-            if(audioContext.state === 'running' && videoPlayer.paused) videoPlayer.play()
+            if (audioContext.state === 'running' && videoPlayer.paused) videoPlayer.play()
           });
         }
       });
@@ -97,7 +97,7 @@ for (const element of canvases) {
       source.start(0);
 
       detectBeat();
-      
+
       function drawVisualizer() {
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -153,9 +153,9 @@ for (const element of canvases) {
           // Begin drawing the blur effect with aesthetic colors
 
           ctx.beginPath();
-          ctx.strokeRect(canvas.width * 0.45 + smoothedPoints[i].x, smoothedPoints[i].y, 15,  rectHeight - 2)
-          ctx.strokeRect(canvas.width * 0.45 - smoothedPoints[i].x, smoothedPoints[i].y, 15,  rectHeight - 2)
-          
+          ctx.strokeRect(canvas.width * 0.45 + smoothedPoints[i].x, smoothedPoints[i].y, 15, rectHeight - 2)
+          ctx.strokeRect(canvas.width * 0.45 - smoothedPoints[i].x, smoothedPoints[i].y, 15, rectHeight - 2)
+
           // ctx.strokeRect(canvas.width * 0.45 + smoothedPoints[i].x, rectHeight, 15, smoothedPoints[i].y,)
           // ctx.strokeRect(canvas.width * 0.45 - smoothedPoints[i].x, rectHeight, 15, smoothedPoints[i].y)
         }
