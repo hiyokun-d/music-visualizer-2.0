@@ -42,7 +42,7 @@ for (const element of canvases) {
   canvas.width = innerHeight;
   canvas.height = innerHeight;
  
-  fetch("music/DUKA - last chilid (lirik).mp3")
+  fetch("music/gravity falls.mp3")
     .then((response) => response.arrayBuffer())
     .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
     .then((AudioBuffer) => {
@@ -51,7 +51,7 @@ for (const element of canvases) {
       source.buffer = AudioBuffer;
 
       analyser = audioContext.createAnalyser();
-      analyser.fftSize = 4096; // Adjust this for the smoother visualization
+      analyser.fftSize = 1024; // Adjust this for the smoother visualization
       const bufferLength = analyser.frequencyBinCount;
       dataArray = new Uint8Array(bufferLength);
       analyser.getByteTimeDomainData(dataArray);
