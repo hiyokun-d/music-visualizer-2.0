@@ -12,4 +12,5 @@ kalian mugnkin bisa datangin channel mereka, mereka semua punya banyak musik yan
 
 ## how can i run it on website
 just follow the link (music visualizer)[https://hiyokun-d.github.io/music-visualizer-2.0/] and then by the url just add what version you want to listen
+like if tou want to listen to v3 just add `https://hiyokun-d.github.io/music-visualizer-2.0/v3`
 ### Made with ❤️ and 😁
