@@ -10,4 +10,6 @@ Bukan hanya dari karu saya juga ngambil beberapa musik dari:
 
 kalian mugnkin bisa datangin channel mereka, mereka semua punya banyak musik yang epic dan juga enak buat di dengar dan cocok untuk kalian jika gabut dan ingin membuat musik visualizer untuk mengisi waktu luang kalian
 
+## how can i run it on website
+just follow the link (music visualizer)[https://hiyokun-d.github.io/music-visualizer-2.0/] and then by the url just add what version you want to listen
 ### Made with ❤️ and 😁
