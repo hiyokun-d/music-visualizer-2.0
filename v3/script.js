@@ -41,7 +41,7 @@ for (const element of canvases) {
 
   canvas.width = innerHeight;
   canvas.height = innerHeight;
- 
+
   fetch("music/gravity falls.mp3")
     .then((response) => response.arrayBuffer())
     .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
