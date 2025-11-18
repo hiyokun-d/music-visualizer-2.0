@@ -5,7 +5,7 @@ const thumbnailEl = document.getElementById("thumbnail");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
-let audioContext;
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
 let wholeAnalyzer, bassAnalyzer, drumAnalyzer, otherAnalyzer;
 let bassGain, drumGain, otherGain;
 
@@ -24,8 +24,6 @@ let beatTimeout = null;
 addEventListener("click", startAudio);
 
 function startAudio() {
-  audioContext = new AudioContext();
-
   // analyzers
   wholeAnalyzer = audioContext.createAnalyser();
   bassAnalyzer = audioContext.createAnalyser();
