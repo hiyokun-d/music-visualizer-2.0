@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Analyzer v3</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+
+  <body>
+    <div class="thumbnail-container">
+      <div class="screen-flash"></div>
+      <img
+        id="thumbnail"
+        src="./thumbnail.jpg"
+        alt="Thumbnail should be here"
+      />
+      <div class="title-subtitle">
+        <h1>Orang baru lebe gacor</h1>
+        <h2>ecko show, Juan Reza, chesylino</h2>
+      </div>
+    </div>
+
+    <div class="visual-container">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <!-- <div class="visualizer-container">
+    <canvas class="left visualizer">Your Browser need to update to the latest update</canvas>
+    <canvas class="right visualizer">Your Browser need to update to the latest update</canvas>
+  </div> -->
+
+    <script src="script.js"></script>
+    <script src="beat.js"></script>
+  </body>
+</html>

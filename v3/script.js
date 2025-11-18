@@ -1,6 +1,6 @@
 //@hiyokun-d was here!
 
-const canvases = document.getElementsByClassName("visualizer")
+const canvases = document.getElementsByClassName("visualizer");
 const videoPlayer = document.getElementById("background-video");
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -17,12 +17,38 @@ function shuffleArray(array) {
   return array;
 }
 
-const colors = ['#607848', '#b4ccB9', '#de652f', '#f7dc8d', '#3d2e3d',
-  '#4286f4', '#fc035e', '#21c188', '#f08a17', '#a82745',
-  '#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6',
-  '#16a085', '#c0392b', '#27ae60', '#d35400', '#8e44ad',
-  '#1abc9c', '#2980b9', '#f1c40f', '#34495e', '#e67e22',
-  '#34495e', '#e74c3c', '#95a5a6', '#d35400', '#8e44ad',]
+const colors = [
+  "#607848",
+  "#b4ccB9",
+  "#de652f",
+  "#f7dc8d",
+  "#3d2e3d",
+  "#4286f4",
+  "#fc035e",
+  "#21c188",
+  "#f08a17",
+  "#a82745",
+  "#3498db",
+  "#e74c3c",
+  "#2ecc71",
+  "#f39c12",
+  "#9b59b6",
+  "#16a085",
+  "#c0392b",
+  "#27ae60",
+  "#d35400",
+  "#8e44ad",
+  "#1abc9c",
+  "#2980b9",
+  "#f1c40f",
+  "#34495e",
+  "#e67e22",
+  "#34495e",
+  "#e74c3c",
+  "#95a5a6",
+  "#d35400",
+  "#8e44ad",
+];
 
 // Shuffle the colors array
 const shuffledColors = shuffleArray(colors);
@@ -32,7 +58,7 @@ let beatDetected = false;
 let beatTimeout = null;
 
 for (const element of canvases) {
-  const canvas = element
+  const canvas = element;
   const ctx = canvas.getContext("2d");
 
   addEventListener("resize", () => {
@@ -59,9 +85,6 @@ for (const element of canvases) {
       source.connect(analyser);
       analyser.connect(audioContext.destination);
 
-
-
-
       function detectBeat() {
         analyser.getByteFrequencyData(dataArray);
         for (let i = 0; i < bufferLength; i++) {
@@ -83,12 +106,13 @@ for (const element of canvases) {
       }
 
       // Add an event listener to start the audio context on user interaction
-      document.addEventListener('click', () => {
+      document.addEventListener("click", () => {
         // Check if the audio context is in a suspended state
-        if (audioContext.state === 'suspended') {
+        if (audioContext.state === "suspended") {
           audioContext.resume().then(() => {
-            console.log('Audio context resumed successfully');
-            if (audioContext.state === 'running' && videoPlayer.paused) videoPlayer.play()
+            console.log("Audio context resumed successfully");
+            if (audioContext.state === "running" && videoPlayer.paused)
+              videoPlayer.play();
           });
         }
       });
@@ -116,18 +140,21 @@ for (const element of canvases) {
         // Loop through the frequency data array and calculate smoothed points
         for (let i = 0; i < dataArray.length; i++) {
           const amplitude = (dataArray[i] / 200 - 1) * (canvas.height / 4);
-          const x = (i - dataArray.length / 2) * segmentWidth + canvas.width / 2; // Mirror left and right
+          const x =
+            (i - dataArray.length / 2) * segmentWidth + canvas.width / 2; // Mirror left and right
           let y = centerY + amplitude; // Adjusted y-coordinate
 
           smoothedPoints.push({ x, y });
         }
 
-
         // Set visualizer style properties
         ctx.lineWidth = 2; // Set the line width
         const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         for (let i = 0; i < shuffledColors.length; i++) {
-          gradient.addColorStop(i / (shuffledColors.length - 1), shuffledColors[i]);
+          gradient.addColorStop(
+            i / (shuffledColors.length - 1),
+            shuffledColors[i],
+          );
         }
         ctx.strokeStyle = gradient; // Set stroke color
 
@@ -138,7 +165,9 @@ for (const element of canvases) {
         for (let i = 1; i < smoothedPoints.length; i++) {
           // Draw lines between points
           // ctx.lineTo(smoothedPoints[i].x, smoothedPoints[i].y);
-          const rectHeight = Math.abs(smoothedPoints[i].y - smoothedPoints[i - 1].y); // Height of the rectangle
+          const rectHeight = Math.abs(
+            smoothedPoints[i].y - smoothedPoints[i - 1].y,
+          ); // Height of the rectangle
 
           // // Draw circles at each point on the right side
           // ctx.beginPath();
@@ -153,13 +182,22 @@ for (const element of canvases) {
           // Begin drawing the blur effect with aesthetic colors
 
           ctx.beginPath();
-          ctx.strokeRect(canvas.width * 0.45 + smoothedPoints[i].x, smoothedPoints[i].y, 15, rectHeight - 2)
-          ctx.strokeRect(canvas.width * 0.45 - smoothedPoints[i].x, smoothedPoints[i].y, 15, rectHeight - 2)
+          ctx.strokeRect(
+            canvas.width * 0.45 + smoothedPoints[i].x,
+            smoothedPoints[i].y,
+            15,
+            rectHeight - 2,
+          );
+          ctx.strokeRect(
+            canvas.width * 0.45 - smoothedPoints[i].x,
+            smoothedPoints[i].y,
+            15,
+            rectHeight - 2,
+          );
 
           // ctx.strokeRect(canvas.width * 0.45 + smoothedPoints[i].x, rectHeight, 15, smoothedPoints[i].y,)
           // ctx.strokeRect(canvas.width * 0.45 - smoothedPoints[i].x, rectHeight, 15, smoothedPoints[i].y)
         }
-
 
         // Stroke the lines
         ctx.stroke();
@@ -170,8 +208,6 @@ for (const element of canvases) {
 
       // Start drawing the visualizer
       drawVisualizer();
-
-
     })
     .catch((error) => {
       console.error("Error loading audio:", error);
