@@ -42,11 +42,11 @@ function startAudio() {
   otherGain = audioContext.createGain();
   otherGain.gain.value = 0;
 
-  let wholeMusic = "./music/entire_track/test.mp3";
+  let wholeMusic = "music/entire_track/test.mp3";
   let diff_tracks = {
-    bass: "./music/4_diff_tracks/test_bass.wav",
-    drum: "./music/4_diff_tracks/test_drums.wav",
-    other: "./music/4_diff_tracks/test_other.wav",
+    bass: "music/4_diff_tracks/test_bass.wav",
+    drum: "music/4_diff_tracks/test_drums.wav",
+    other: "music/4_diff_tracks/test_other.wav",
   };
 
   Promise.all([
